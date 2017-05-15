@@ -11,18 +11,17 @@ import UIKit
 class DetailViewController: UIViewController {
     
     @IBOutlet weak var taskLabel: UILabel!
-    
-    var previousVC = ViewController()
-    var task = Task()
+
+    var task : Task? = nil
     var selectedIndex = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if task.important {
-            taskLabel.text = "❗️ " + task.item
+        if task!.important {
+            taskLabel.text = "❗️ " + task!.item!
         } else {
-            taskLabel.text = task.item
+            taskLabel.text = task!.item!
         }
         
     }
@@ -30,8 +29,10 @@ class DetailViewController: UIViewController {
     
     @IBAction func finishedButton(_ sender: Any) {
         
-        previousVC.tasks.remove(at: selectedIndex)
-        previousVC.tableView.reloadData()
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        context.delete(task!)
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+        
         navigationController?.popViewController(animated: true)
         
     }

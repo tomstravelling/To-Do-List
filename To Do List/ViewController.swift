@@ -17,8 +17,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tasks = makeTaskArray()
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        getTasks()
+        tableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -29,7 +32,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let cell = UITableViewCell()
         
         if tasks[indexPath.row].important {
-            cell.textLabel?.text = "❗️ " + tasks[indexPath.row].item
+            cell.textLabel?.text = "❗️ " + tasks[indexPath.row].item!
         } else {
             cell.textLabel?.text = tasks[indexPath.row].item
         }
@@ -43,16 +46,24 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
     }
     
+    func getTasks() {
+        
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        
+        do {
+            tasks = try context.fetch(Task.fetchRequest()) as [Task]
+        } catch {
+            print("Could not fetch data")
+        }
+        
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "addSegue" {
-            let nextVC = segue.destination as! AddViewController
-            nextVC.previousVC = self
-        } else if segue.identifier == "detailSegue" {
+        if segue.identifier == "detailSegue" {
             let nextVC = segue.destination as! DetailViewController
-            nextVC.task = sender as! Task
+            nextVC.task = sender as? Task
             nextVC.selectedIndex = selectedIndex
-            nextVC.previousVC = self
         } else {
             print("Segue not found")
         }
@@ -64,16 +75,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let task = tasks[indexPath.row]
         selectedIndex = indexPath.row
         performSegue(withIdentifier: "detailSegue", sender: task)
-        
-    }
-    
-    func makeTaskArray() -> [Task] {
-        
-        let task1 = Task()
-        task1.item = "Finish this app"
-        task1.important = true
-        
-        return [task1]
         
     }
     

@@ -13,8 +13,6 @@ class AddViewController: UIViewController {
     @IBOutlet weak var itemField: UITextField!
     @IBOutlet weak var importanceSwitch: UISwitch!
     
-    var previousVC = ViewController()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,14 +22,15 @@ class AddViewController: UIViewController {
     
     @IBAction func addNewTask(_ sender: Any) {
         
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        
         if itemField.text != "" {
             
-            let task = Task()
+            let task = Task(context: context)
             task.item = itemField.text!
             task.important = importanceSwitch.isOn
-            previousVC.tasks.append(task)
-            previousVC.tableView.reloadData()
             navigationController?.popViewController(animated: true)
+            (UIApplication.shared.delegate as! AppDelegate).saveContext()
             
         } else {
             

@@ -15,7 +15,6 @@
 		4D99D8CD1EC9A84B00BB6E8B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D99D8CB1EC9A84B00BB6E8B /* LaunchScreen.storyboard */; };
 		4D99D8D51EC9A9E000BB6E8B /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D99D8D41EC9A9E000BB6E8B /* AddViewController.swift */; };
 		4D99D8D71EC9A9EC00BB6E8B /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D99D8D61EC9A9EC00BB6E8B /* DetailViewController.swift */; };
-		4D99D8D91EC9AAB100BB6E8B /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D99D8D81EC9AAB100BB6E8B /* Task.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,7 +28,6 @@
 		4D99D8CE1EC9A84B00BB6E8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4D99D8D41EC9A9E000BB6E8B /* AddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		4D99D8D61EC9A9EC00BB6E8B /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		4D99D8D81EC9AAB100BB6E8B /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,7 +64,6 @@
 				4D99D8C11EC9A84B00BB6E8B /* ViewController.swift */,
 				4D99D8D41EC9A9E000BB6E8B /* AddViewController.swift */,
 				4D99D8D61EC9A9EC00BB6E8B /* DetailViewController.swift */,
-				4D99D8D81EC9AAB100BB6E8B /* Task.swift */,
 				4D99D8C31EC9A84B00BB6E8B /* Main.storyboard */,
 				4D99D8C91EC9A84B00BB6E8B /* Assets.xcassets */,
 				4D99D8CB1EC9A84B00BB6E8B /* LaunchScreen.storyboard */,
@@ -153,7 +150,6 @@
 				4D99D8C81EC9A84B00BB6E8B /* To_Do_List.xcdatamodeld in Sources */,
 				4D99D8D71EC9A9EC00BB6E8B /* DetailViewController.swift in Sources */,
 				4D99D8D51EC9A9E000BB6E8B /* AddViewController.swift in Sources */,
-				4D99D8D91EC9AAB100BB6E8B /* Task.swift in Sources */,
 				4D99D8C01EC9A84B00BB6E8B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
