@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddViewController: UIViewController {
+class AddViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var itemField: UITextField!
     @IBOutlet weak var importanceSwitch: UISwitch!
@@ -17,8 +17,18 @@ class AddViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.itemField.delegate = self
+        
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     
     @IBAction func addNewTask(_ sender: Any) {
         
